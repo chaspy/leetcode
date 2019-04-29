@@ -5,7 +5,7 @@
 def two_sum(nums, target)
   nums.combination(2) do |a, b| 
     sum = a + b
-    p sum if sum == target
+    return [nums.index(a), nums.rindex(b)] if sum == target
   end
 end
 
