@@ -5,6 +5,10 @@ function isPalindrome(x: number): boolean {
   let quotient = 0 // 商
   let remainder = x // 余り
 
+  if (x < 0) {
+    return false
+  }
+
   for (let i = digit - 1; i >= 0; i--) {
     quotient = Math.floor(remainder / 10 ** i)
     remainder = x % 10 ** i
