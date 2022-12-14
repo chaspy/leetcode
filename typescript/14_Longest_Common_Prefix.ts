@@ -1,31 +1,18 @@
 function longestCommonPrefix(strs: string[]): string {
-  // initialize
-  let array = new Array(strs.length)
-  for (let x = 0; x < strs.length; x++) {
-    array[x] = new Array(strs.length) //配列(array)の各要素に対して、要素数5の配列を作成
-    for (let y = 0; y < 100; y++) {
-      // TODO: get length of words
-      array[x][y] = ''
-    }
-  }
-
+  let i = 0 // compare with first item
   let ret = ''
 
-  for (let i = 0; i < strs.length; i++) {
-    let a = strs[i].split('')
-    for (let j = 0; j < a.length; j++) {
-      array[i][j] = a[j]
+  while (true) {
+    const char = strs[0][i]
+    const match = strs.every((str) => str[i] === char)
+    if (match) {
+      i += 1
+    } else {
+      break
     }
   }
 
-  let tmp: string[] = new Array(strs.length)
-  for (let k = 0; k < strs.length; k++) {
-    for (let l = 0; l < strs.length; l++) {
-      tmp.push(array[l][k])
-    }
-    console.log(tmp)
-  }
-
+  ret = strs[0].slice(0, i)
   return ret
 }
 
