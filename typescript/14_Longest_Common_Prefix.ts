@@ -2,7 +2,12 @@ function longestCommonPrefix(strs: string[]): string {
   let i = 0 // compare with first item
   let ret = ''
 
-  while (true) {
+  // find shortest length of string in array
+  const len = strs.reduce(function (a, b) {
+    return a.length <= b.length ? a : b
+  }).length
+
+  while (i < len) {
     const char = strs[0][i]
     const match = strs.every((str) => str[i] === char)
     if (match) {
