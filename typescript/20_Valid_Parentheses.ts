@@ -1,6 +1,6 @@
 function isValid(s: string): boolean {
   const arr = s.split('')
-  let queue: string[] = []
+  let stack: string[] = []
 
   let parenthese = new Map()
   parenthese.set(')', '(')
@@ -10,13 +10,13 @@ function isValid(s: string): boolean {
   let ret = true
 
   arr.forEach(function (value, index) {
-    queue.push(value)
+    stack.push(value)
 
-    if (queue.length == 1) {
+    if (stack.length == 1) {
       // do nothing
-    } else if (queue[queue.length - 2] == parenthese.get(value)) {
-      queue.pop()
-      queue.pop()
+    } else if (stack[stack.length - 2] == parenthese.get(value)) {
+      stack.pop()
+      stack.pop()
     } else if (value == '(' || value == '{' || value == '[') {
       // do nothing
     } else {
@@ -24,7 +24,7 @@ function isValid(s: string): boolean {
     }
   })
 
-  if (queue.length != 0) {
+  if (stack.length != 0) {
     ret = false
   }
 
