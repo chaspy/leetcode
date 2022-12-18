@@ -1,20 +1,18 @@
 function removeDuplicates(nums: number[]): number {
-  let arr: number[] = []
+  let k = 0
   nums.forEach(function (value, index) {
-    console.log(`debug: value, index = ${value}, ${index}`)
-    console.log(`arr: ${arr}`)
     if (index == 0) {
-      arr.push(value)
-    } else if (value == arr[arr.length - 1]) {
       // do nothing
-      console.log(`skipped. now: ${arr}`)
+      k += 1 // k = 1
+    } else if (nums.slice(0, k).includes(value)) {
+      // do nothing. skip since the number is duplicated.
     } else {
-      arr.push(value)
-      console.log(`pushed. now: ${arr}`)
+      nums[k] = value
+      k += 1
     }
   })
-  console.log(`arr: ${arr}`)
-  return arr.length
+  console.log(`nums: ${nums}`)
+  return k
 }
 
 // Example 1:
